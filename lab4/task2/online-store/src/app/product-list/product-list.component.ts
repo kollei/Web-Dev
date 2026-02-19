@@ -7,12 +7,15 @@ import { PRODUCTS } from '../data/products';
   standalone: true,
   imports: [ProductCardComponent],
   template: `
-    <h1>Online Store</h1>
+    <div class="page">
+      <h1>Online Store</h1>
+      <p class="sub">10+ products from Kaspi.kz</p>
 
-    <div class="grid">
-      @for (p of products; track p.id) {
-        <app-product-card [product]="p"></app-product-card>
-      }
+      <div class="grid">
+        @for (p of products; track p.id) {
+          <app-product-card [product]="p"></app-product-card>
+        }
+      </div>
     </div>
   `,
   styleUrl: './product-list.component.css',
