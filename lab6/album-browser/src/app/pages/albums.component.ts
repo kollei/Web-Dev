@@ -1,32 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { AlbumService } from '../services/album.service';
 import { Album } from '../models/album';
 
 @Component({
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   template: `
     <h1>Albums</h1>
 
-    @if (loading) {
-      <p class="muted">Loading albums...</p>
-    } @else {
-      @if (albums.length === 0) {
-        <p class="muted">No albums.</p>
-      } @else {
-        <div class="list">
-          @for (a of albums; track a.id) {
-            <div class="item">
-              <a class="title" [routerLink]="['/albums', a.id]">
-                <span class="id">#{{ a.id }}</span> {{ a.title }}
-              </a>
+    <p class="muted">debug: loading={{loading}}, albums={{albums.length}}</p>
 
-              <button class="danger" (click)="onDelete(a.id)">Delete</button>
-            </div>
-          }
+    @if (loading) {
+    <p>Loading albums...</p>
+    } @else {
+
+    @for (album of albums; track album.id) {
+        <div class="album">
+        <span>#{{album.id}} {{album.title}}</span>
+        <button>Delete</button>
         </div>
-      }
+    }
+
     }
   `,
   styles: [`
@@ -69,20 +63,26 @@ export class AlbumsComponent implements OnInit {
   constructor(private albumService: AlbumService) {}
 
   ngOnInit(): void {
+    console.log('AlbumsComponent: ngOnInit start');
+
     this.albumService.getAlbums().subscribe({
-      next: (data) => {
+        next: (data) => {
+        console.log('AlbumsComponent: NEXT, length =', data?.length);
+        console.log('first item =', data?.[0]);
         this.albums = data;
         this.loading = false;
-      },
-      error: () => {
-        this.albums = [];
+        },
+        error: (err) => {
+        console.log('AlbumsComponent: ERROR =', err);
         this.loading = false;
-      },
+        },
+        complete: () => {
+        console.log('AlbumsComponent: COMPLETE');
+        },
     });
-  }
+    }
 
   onDelete(id: number): void {
-    // JSONPlaceholder "симулирует" — удаляем локально после успешного ответа
     this.albumService.deleteAlbum(id).subscribe({
       next: () => {
         this.albums = this.albums.filter(a => a.id !== id);

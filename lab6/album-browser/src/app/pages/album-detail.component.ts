@@ -113,7 +113,6 @@ export class AlbumDetailComponent implements OnInit {
 
     this.albumService.updateAlbum(updated).subscribe({
       next: () => {
-        // API не сохраняет реально, но UI обновляем как будто сохранилось
         this.album = updated;
         this.saving = false;
         this.message = 'Saved locally (JSONPlaceholder simulates update).';
