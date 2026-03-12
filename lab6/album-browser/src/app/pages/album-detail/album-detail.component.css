@@ -1,0 +1,27 @@
+.page {
+  padding: 24px;
+}
+
+.detail-box {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input {
+  padding: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+a,
+button {
+  padding: 8px 12px;
+  text-decoration: none;
+  cursor: pointer;
+}

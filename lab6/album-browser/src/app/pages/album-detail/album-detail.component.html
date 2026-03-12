@@ -1,0 +1,36 @@
+<section class="page">
+  <h1>Album Details</h1>
+
+  @if (loading) {
+    <p>Loading...</p>
+  }
+
+  @if (error) {
+    <p>{{ error }}</p>
+  }
+
+  @if (album) {
+    <div class="detail-box">
+      <p><strong>ID:</strong> {{ album.id }}</p>
+      <p><strong>User ID:</strong> {{ album.userId }}</p>
+      <p><strong>Title:</strong> {{ album.title }}</p>
+
+      <label for="title">Edit title:</label>
+      <input
+        id="title"
+        type="text"
+        [(ngModel)]="editedTitle"
+      />
+
+      <div class="actions">
+        <button type="button" (click)="save()">Save</button>
+        <a [routerLink]="['/albums', album.id, 'photos']">View Photos</a>
+        <button type="button" (click)="goBack()">Back</button>
+      </div>
+
+      @if (message) {
+        <p>{{ message }}</p>
+      }
+    </div>
+  }
+</section>

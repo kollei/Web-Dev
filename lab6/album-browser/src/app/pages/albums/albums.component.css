@@ -1,0 +1,29 @@
+.page {
+  padding: 24px;
+}
+
+.album-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.album-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+.album-link {
+  text-decoration: none;
+  color: #000;
+  flex: 1;
+}
+
+button {
+  padding: 6px 12px;
+  cursor: pointer;
+}

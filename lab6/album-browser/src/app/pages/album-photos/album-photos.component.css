@@ -1,0 +1,28 @@
+.page {
+  padding: 24px;
+}
+
+button {
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.photo-card {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 8px;
+}

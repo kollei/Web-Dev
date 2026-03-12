@@ -1,0 +1,12 @@
+.page {
+  padding: 24px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 16px;
+  text-decoration: none;
+  border: 1px solid #333;
+  color: #333;
+}
