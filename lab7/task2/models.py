@@ -21,6 +21,9 @@ class Dog(Animal):
     def speak(self):
         return "Woof"
 
+    def barking(self):
+        return "BRRR"
+
 
 class Cat(Animal):
     def __init__(self, name, age, color):
@@ -28,3 +31,6 @@ class Cat(Animal):
 
     def speak(self):
         return "Meow"
+    
+    def purr(self):
+        return "MRRR"
